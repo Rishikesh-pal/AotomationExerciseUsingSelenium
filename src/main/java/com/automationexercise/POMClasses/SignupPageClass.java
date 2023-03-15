@@ -27,7 +27,7 @@ public class SignupPageClass {
 	}
 	
 	public void enterloginMail() {
-		loginMail.sendKeys(null);
+		loginMail.sendKeys();
 	}
 
 }
