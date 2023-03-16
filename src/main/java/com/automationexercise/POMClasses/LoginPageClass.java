@@ -1,14 +1,11 @@
 package com.automationexercise.POMClasses;
 
-import java.io.FileReader;
-import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SignupPageClass {
+public class LoginPageClass {
 	private WebDriver driver;
 	
 	
@@ -21,13 +18,21 @@ public class SignupPageClass {
 	@FindBy(css="input#susbscribe_email")private WebElement subscribeMail;
 	@FindBy(css="button#subscribe")private WebElement subscribeButton;
 	
-	public SignupPageClass(WebDriver driver) {
+	public LoginPageClass(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
 	
-	public void enterloginMail() {
-		loginMail.sendKeys();
+	public void entersignupEmail() {
+		signupEmail.sendKeys("gym@gmail.com");
+	}
+	
+	public void entersignupName() {
+		signupName.sendKeys("Rishikesh");
+	}
+	
+	public void clicksignup() {
+		signup.click();
 	}
 
 }
