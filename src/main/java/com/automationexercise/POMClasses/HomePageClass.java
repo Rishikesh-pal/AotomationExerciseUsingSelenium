@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePageClass {
-	private WebDriver driver;
+	public WebDriver driver;
 	@FindBy(xpath="//a[text()=' Signup / Login']") private WebElement signup;
 	
 	public HomePageClass(WebDriver driver) {
@@ -14,7 +14,7 @@ public class HomePageClass {
 		PageFactory.initElements(driver,this);
 	}
 	
-	public void clickSihnup() {
+	public void clickSignup() {
 		signup.click();
 	}
 
