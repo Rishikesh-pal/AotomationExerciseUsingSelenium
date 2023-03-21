@@ -6,8 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePageClass {
+	
 	public WebDriver driver;
-	@FindBy(xpath="//a[text()=' Signup / Login']") private WebElement signup;
+	@FindBy(xpath="//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]") private WebElement signup;
 	
 	public HomePageClass(WebDriver driver) {
 		this.driver=driver;

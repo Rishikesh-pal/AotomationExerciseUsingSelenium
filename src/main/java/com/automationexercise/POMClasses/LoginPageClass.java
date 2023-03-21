@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPageClass {
-	public WebDriver driver;
+	public static WebDriver driver;
 	
 	
 	@FindBy(xpath="//input[@data-qa='login-email']")private WebElement loginMail;

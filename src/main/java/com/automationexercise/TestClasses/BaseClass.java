@@ -3,6 +3,7 @@ package com.automationexercise.TestClasses;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,12 +18,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 	public WebDriver driver;
-	HomePageClass homePage;
-	LoginPageClass loginPage;
+	HomePageClass homePage=new HomePageClass(driver);
+	LoginPageClass loginPage=new LoginPageClass(driver);
 	
 	@BeforeMethod
 	public void setup() throws IOException, InterruptedException {
-//		WebDriverManager.chromedriver().setup();
+		WebDriverManager.chromedriver().setup();
 		
 		
 //		Properties prop=new Properties();
@@ -30,10 +31,14 @@ public class BaseClass {
 //		prop.load(reader);
 
 
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rishi\\eclipse-workspace\\automationexercise\\Drivers\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rishi\\eclipse-workspace\\automationexercise\\Drivers\\chromedriver.exe");
 		driver=new ChromeDriver();
-		driver.get("https://automationexercise.com/");
 		driver.manage().window().maximize();
+		driver.get("https://automationexercise.com/");
+		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+
+		
 
 
 
@@ -51,10 +56,10 @@ public class BaseClass {
 //		System.out.println("sign up button clicked");
 	}
 	
-	@AfterMethod
-	public void teardown() throws InterruptedException {
-		Thread.sleep(2000);
-		driver.quit();
-	}
+//	@AfterMethod
+//	public void teardown() throws InterruptedException {
+//		Thread.sleep(2000);
+//		driver.quit();
+//	}
 
 }
