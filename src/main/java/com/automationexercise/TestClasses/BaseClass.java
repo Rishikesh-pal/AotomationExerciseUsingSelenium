@@ -1,10 +1,11 @@
 package com.automationexercise.TestClasses;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.LogManager;
+
+import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -21,20 +22,21 @@ public class BaseClass {
 	HomePageClass homePage=new HomePageClass(driver);
 	LoginPageClass loginPage=new LoginPageClass(driver);
 	
+//	private static final Logger log=LogManager.getLogger(BaseClass.class.getName());
+	
 	@BeforeMethod
 	public void setup() throws IOException, InterruptedException {
 		WebDriverManager.chromedriver().setup();
-		
+		System.out.println("Step 1. Chrome opened ");
 		
 //		Properties prop=new Properties();
 //		FileReader reader=new FileReader("configs//TestData.properties");
 //		prop.load(reader);
-
-
-//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rishi\\eclipse-workspace\\automationexercise\\Drivers\\chromedriver.exe");
+		
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://automationexercise.com/");
+		System.out.println("Step 2: https://automationexercise.com opened");
 		Thread.sleep(3000);
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 
@@ -56,10 +58,10 @@ public class BaseClass {
 //		System.out.println("sign up button clicked");
 	}
 	
-//	@AfterMethod
-//	public void teardown() throws InterruptedException {
-//		Thread.sleep(2000);
-//		driver.quit();
-//	}
+	@AfterMethod
+	public void teardown() throws InterruptedException {
+		Thread.sleep(2000);
+		driver.quit();
+	}
 
 }
