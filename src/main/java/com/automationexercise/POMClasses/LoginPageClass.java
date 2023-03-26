@@ -17,6 +17,7 @@ public class LoginPageClass {
 	@FindBy(xpath="//button[@data-qa='signup-button']")private WebElement signup;
 	@FindBy(css="input#susbscribe_email")private WebElement subscribeMail;
 	@FindBy(css="button#subscribe")private WebElement subscribeButton;
+	@FindBy(xpath="//h2[text()='New User Signup!']")private WebElement signupMsg;
 	
 	public LoginPageClass(WebDriver driver) {
 		this.driver=driver;
@@ -34,5 +35,13 @@ public class LoginPageClass {
 	public void clicksignup() {
 		signup.click();
 	}
+	
+	public boolean verifySignupMsg() {
+//		signupMsg.getText();
+		boolean result=signupMsg.isDisplayed();
+		return result;
+		
+	}
+	
 
 }

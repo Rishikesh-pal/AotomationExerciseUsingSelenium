@@ -2,10 +2,10 @@ package com.automationexercise.TestClasses;
 
 
 import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.LogManager;
+import java.util.logging.FileHandler;
 
-import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -19,16 +19,25 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 	public WebDriver driver;
+	public static Properties prop;
 	HomePageClass homePage=new HomePageClass(driver);
 	LoginPageClass loginPage=new LoginPageClass(driver);
 	
-//	private static final Logger log=LogManager.getLogger(BaseClass.class.getName());
+//	private static Logger log= (Logger) LogManager.getLogger(BaseClass.class);
+//	
+	
+	public void properties() {
+		prop=new Properties();
+		FileHandler ip=new FileHandler();
+	}
+	
+	
 	
 	@BeforeMethod
 	public void setup() throws IOException, InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		System.out.println("Step 1. Chrome opened ");
-		
+//		log.info("Step 1 done");
 //		Properties prop=new Properties();
 //		FileReader reader=new FileReader("configs//TestData.properties");
 //		prop.load(reader);
