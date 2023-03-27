@@ -25,7 +25,7 @@ public class LoginPageClass {
 	}
 	
 	public void entersignupEmail() {
-		signupEmail.sendKeys("gym@gmail.com");
+		signupEmail.sendKeys("abc@abc.in");
 	}
 	
 	public void entersignupName() {
