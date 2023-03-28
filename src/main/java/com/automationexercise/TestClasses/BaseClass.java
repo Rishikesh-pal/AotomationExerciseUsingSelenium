@@ -8,6 +8,8 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.FileHandler;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +17,7 @@ import org.testng.annotations.BeforeMethod;
 
 import com.automationexercise.POMClasses.HomePageClass;
 import com.automationexercise.POMClasses.LoginPageClass;
+import com.automationexercise.POMClasses.SignupPageClass;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -24,9 +27,10 @@ public class BaseClass {
 	public static Properties prop;
 	HomePageClass homePage=new HomePageClass(driver);
 	LoginPageClass loginPage=new LoginPageClass(driver);
+	SignupPageClass signupPage=new SignupPageClass(driver);
 	
-//	private static Logger log= (Logger) LogManager.getLogger(BaseClass.class);
-//	
+	private static Logger log=  LogManager.getLogger(BaseClass.class.getTypeName());
+	
 	
 	public BaseClass(){
 		try{
@@ -49,13 +53,7 @@ public class BaseClass {
 	public void setup() throws IOException, InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		System.out.println("Step 1. Chrome opened ");
-//		prop=new Properties();
-//		FileInputStream fis=new FileInputStream("C:\\Users\\Rishi\\eclipse-workspace\\automationexercise\\configs\\TestData.properties");
-//		prop.load(fis);
-//		log.info("Step 1 done");
-//		Properties prop=new Properties();
-//		FileReader reader=new FileReader("configs//TestData.properties");
-//		prop.load(reader);
+		log.info("Chrome opened");
 		
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
@@ -63,23 +61,7 @@ public class BaseClass {
 		System.out.println("Step 2: https://automationexercise.com opened");
 		Thread.sleep(3000);
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-
 		
-
-
-
-
-//		homePage.clickSihnup();
-//		Thread.sleep(2000);
-//		System.out.println("signup button clicked");
-//		loginPage.entersignupEmail();
-//		Thread.sleep(2000);
-//		System.out.println("signup mail entered");
-//		loginPage.entersignupName();
-//		Thread.sleep(2000);
-//		System.out.println("Name entered");
-//		loginPage.clicksignup();
-//		System.out.println("sign up button clicked");
 	}
 	
 	@AfterMethod
