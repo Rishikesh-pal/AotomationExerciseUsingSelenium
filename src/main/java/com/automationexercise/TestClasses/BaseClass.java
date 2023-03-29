@@ -52,14 +52,12 @@ public class BaseClass {
 	@BeforeMethod
 	public void setup() throws IOException, InterruptedException {
 		WebDriverManager.chromedriver().setup();
-		System.out.println("Step 1. Chrome opened ");
+		System.out.println("Step 1:  Chrome opened ");
 		log.info("Chrome opened");
-		
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("website"));
-		System.out.println("Step 2: https://automationexercise.com opened");
-		Thread.sleep(3000);
+		System.out.println("Step 2: Navigated to url http://automationexercise.com");
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		
 	}
